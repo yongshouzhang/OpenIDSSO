@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "AskUser";
+}
+
+<h3>该用户已登录，继续登录将下线该用户，继续吗？</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("confirm", false)
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <input type="submit" value="确认"  class="btn btn-default" />
+        <input type="submit" value="取消"  class="btn btn-primary" />
+    </div>
+}
+@section script { 
+<script type="text/javascript">
+    $(function () {
+        $("input[type='submit'].btn").on("click", function () {
+            $("input[type='hidden'][name='confirm']").val(!$(this).index());
+        });
+    });
+</script>
+}
+

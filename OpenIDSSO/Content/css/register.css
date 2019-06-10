@@ -1,0 +1,33 @@
+div.container.top-content {
+  padding-top: 100px;
+}
+div.register-form {
+  padding: 25px 25px 30px  25px;
+  background-color: rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  text-align: left;
+}
+div.register-form > .form-top {
+  padding: 5px;
+}
+div.register-form > .form-bottom {
+  padding: 5px;
+}
+div.register-form > .form-bottom div.form-group {
+  position: relative;
+}
+div.register-form > .form-bottom div.form-group > input.form-control {
+  padding-right: 30px;
+}
+div.register-form > .form-bottom div.form-group > span.glyphicon {
+  position: absolute;
+  float: right;
+  right: 10px;
+  top: calc(50% - 7px);
+  color: #777;
+}
+div.slide-img > img {
+  max-width: 100%;
+}

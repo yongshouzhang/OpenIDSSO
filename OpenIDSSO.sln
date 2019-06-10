@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenIDSSO", "OpenIDSSO\Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenIDSSO.Tests", "OpenIDSSO.Tests\OpenIDSSO.Tests.csproj", "{FDEB61D9-AC5A-4602-9FEF-D852DB9A6658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenIDRP", "OpenIDRP\OpenIDRP.csproj", "{4CA85CBC-67FB-428C-8E26-58793771CC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FDEB61D9-AC5A-4602-9FEF-D852DB9A6658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDEB61D9-AC5A-4602-9FEF-D852DB9A6658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDEB61D9-AC5A-4602-9FEF-D852DB9A6658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA85CBC-67FB-428C-8E26-58793771CC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA85CBC-67FB-428C-8E26-58793771CC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA85CBC-67FB-428C-8E26-58793771CC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA85CBC-67FB-428C-8E26-58793771CC81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

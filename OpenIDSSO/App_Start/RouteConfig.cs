@@ -14,6 +14,11 @@ namespace OpenIDSSO
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "User identities",
+                url: "user/{id}/{action}",
+                defaults: new { controller = "User", action = "Identity", id = string.Empty });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

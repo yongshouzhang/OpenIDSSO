@@ -1,0 +1,89 @@
+﻿@using OpenIDSSO.Infrastructure;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 单点登录认证中心</title>
+    <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @RenderSection("stylesheet",false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("单点登录认证中心", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                        <a href="#">个人中心</a>
+                    </li>
+                    <li>
+                        <a href="#">登录管理</a>
+                    </li>
+                    <li>
+                        <a href="#">关于</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="/Account/LogOff">
+                                <span class="glyphicon glyphicon-user"></span>
+                                退出
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/Account/LogOn">
+                                <span class="glyphicon glyphicon-user"></span>
+                                登录
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Account/Register">
+                                <span class="glyphicon glyphicon-user"></span>
+                                注册
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 单点登录认证中心</p>
+        </footer>
+    </div>
+    <script src="/Scripts/jquery-3.4.0.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+     @if (((IOpenIDPrincipal)User).IsForceLogOff)
+     {
+         <script type="text/javascript">
+             $(function () {
+                 alert("当前用户已在其他浏览器中登录，你被挤下线");
+             });
+         </script>
+     }
+    @RenderSection("script",false)
+</body>
+</html>
