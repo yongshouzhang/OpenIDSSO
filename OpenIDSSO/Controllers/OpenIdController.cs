@@ -172,7 +172,7 @@ namespace OpenIDSSO.Controllers
         {
             var pendingRequest = ProviderEndpoint.PendingRequest;
             var authReq = pendingRequest as IAuthenticationRequest;
-            ProviderEndpoint.PendingRequest = null; 
+            ProviderEndpoint.PendingRequest = null;
             if (pendingRequest == null)
             {
                 throw new InvalidOperationException("There's no pending authentication request!");

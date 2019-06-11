@@ -37,6 +37,7 @@ namespace OpenIDRP.Controllers
 
             if (response == null)
             {
+                Session["customidentity"] = null;
                 var request = await RP.CreateRequestAsync(EndPoint);
                 StoreRequest store = new StoreRequest();
                 store.Attributes.Add(new AttributeValues(Util.GetRootedUri("").ToString(), new[] { Session.SessionID }));
@@ -106,10 +107,10 @@ namespace OpenIDRP.Controllers
             }
             else
             {
-                //SessionHelper.RemoveSession(session);
+                SessionHelper.RemoveSession(session);
             }
 
-                SessionHelper.RemoveSession(session);
+            SessionHelper.RemoveSession(session);
             return Json(new { result = true });
         }
 

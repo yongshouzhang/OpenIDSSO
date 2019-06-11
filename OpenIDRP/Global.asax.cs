@@ -19,6 +19,7 @@ namespace OpenIDRP
         void Application_PreRequestHandlerExecute(object sender, EventArgs e)
         {
             IPrincipal user = Session["customidentity"] as IOpenIDPrincipal ?? new OpenIDPrincipal(new OpenIDIdentity(null));
+            Session["customidentity"] = user;
             HttpContext.Current.User = user;
         }
     }

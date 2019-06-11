@@ -46,7 +46,7 @@ namespace OpenIDSSO.Infrastructure
                 if (!string.IsNullOrEmpty(rpSession))
                 {
                     // 此处原是接受 RP 发来的SessionId，后发现SessionID会发生变化，和OP的一样
-                    RedisHelper.SetLoginSession(user.UserName + ":session", url, HttpContext.Current.Session.SessionID);
+                    RedisHelper.SetLoginSession(user.UserName + ":session", url, rpSession);
                 }
             }
 
