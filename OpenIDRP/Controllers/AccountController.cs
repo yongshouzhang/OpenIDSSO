@@ -99,18 +99,18 @@ namespace OpenIDRP.Controllers
             //如果是强制被下线,须给前台提示
             if (force.ToLower()=="y")
             {
-                var data = SessionHelper.GetSession(session);
+                object lockId = new object();
+                var data = SessionHelper.GetSession(session, out lockId);
                 if (data != null)
                 {
                     data.Items["customidentity"] = new OpenIDPrincipal(new OpenIDIdentity(null), true);
+                    SessionHelper.SetSessionData(session, data, lockId);
                 }
             }
             else
             {
                 SessionHelper.RemoveSession(session);
             }
-
-            SessionHelper.RemoveSession(session);
             return Json(new { result = true });
         }
 

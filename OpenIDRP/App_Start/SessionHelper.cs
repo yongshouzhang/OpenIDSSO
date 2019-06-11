@@ -31,6 +31,41 @@ namespace OpenIDRP
         }
         #endregion
 
+        public static void SetSessionData(string id,SessionStateStoreData session,object lockId)
+        {
+            if (session != null)
+            {
+                SessionStore.SetAndReleaseItemExclusive(HttpContext.Current, id, session, lockId, false);
+            }
+        }
+
+        public static SessionStateStoreData GetSession(string id, out object lockId)
+        {
+            lockId = new object();
+            if (string.IsNullOrEmpty(id)) return null;
+            if (SessionStore != null)
+            {
+                bool isLock = false;
+                TimeSpan lockAge = TimeSpan.Zero;
+                SessionStateActions state = SessionStateActions.InitializeItem;
+                SessionStateStoreData data = null;
+                try
+                {
+                    data = SessionStore.GetItemExclusive(HttpContext.Current, id, out isLock, out lockAge, out lockId, out state);
+                }
+                catch { }
+                finally
+                {
+                    if (data != null)
+                    {
+                        SessionStore.ReleaseItemExclusive(HttpContext.Current, id, lockId);
+                    }
+                }
+                return data;
+            }
+            return null;
+
+        }
         public static SessionStateStoreData GetSession(string id)
         {
             if (string.IsNullOrEmpty(id)) return null;

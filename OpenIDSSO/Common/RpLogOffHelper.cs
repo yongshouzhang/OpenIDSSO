@@ -23,14 +23,15 @@ namespace OpenIDSSO.Common
             {
                 if (force)
                 {
-                    var session = SessionHelper.GetSession(id);
+                    object lockId = new object();
+                    var session = SessionHelper.GetSession(id, out lockId);
                     session.Items["customidentity"] = new OpenIDPrincipal(new OpenIDIdentity(null), true);
+                    SessionHelper.SetSessionData(id, session, lockId);
                 }else
                 {
                     SessionHelper.RemoveSession(id);
                 }
             }
-
             var list = dic.Where(obj=>!string.Equals(obj.Key,Util.GetRootedUri("").ToString(),StringComparison.Ordinal))
                 .Select(obj => new { url = new Uri(obj.Key), session = obj.Value }).ToList();
 

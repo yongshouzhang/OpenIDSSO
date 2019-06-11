@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using OpenIDRP.Infrastructure;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -75,6 +76,15 @@
     </div>
     <script src="/Scripts/jquery-3.4.0.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    @if ((User as OpenIDPrincipal).IsForceLogOff)
+    {
+    <script type="text/javascript">
+        $(function () {
+            alert("当前用户已在其他浏览器中登录，你被挤下线");
+        });
+    </script>
+    }
+
     @RenderSection("script",false)
 </body>
 </html>
